@@ -1,6 +1,6 @@
 # ec2 iam role
 resource "aws_iam_role" "role" {
-  name = "${var.resource_name_prefix}"
+  name = var.resource_name_prefix
 
   assume_role_policy = <<EOF
 {
