@@ -3,15 +3,15 @@ resource "aws_kms_key" "parameter_store" {
 
   description = "Parameter store and backup key for ${var.resource_name_prefix}"
 
-  policy                  = "${data.template_file.kms_policy.rendered}"
+  policy                  = data.template_file.kms_policy.rendered
   deletion_window_in_days = 30
   is_enabled              = true
   enable_key_rotation     = true
 
   tags = "${
-            merge(
-              map("Name", format("%s-%s", var.resource_name_prefix, "parameter-store")),
-              var.tags,
-            )
-          }"
+    merge(
+      map("Name", format("%s-%s", var.resource_name_prefix, "parameter-store")),
+      var.tags,
+    )
+  }"
 }

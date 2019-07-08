@@ -9,7 +9,7 @@ resource "aws_security_group" "allow_from_office" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.whitelist}"]
+    cidr_blocks = var.whitelist
   }
 
   # HTTPS access
@@ -18,7 +18,7 @@ resource "aws_security_group" "allow_from_office" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["${var.whitelist}"]
+    cidr_blocks = var.whitelist
   }
 
   # ICMP
@@ -27,7 +27,7 @@ resource "aws_security_group" "allow_from_office" {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = ["${var.whitelist}"]
+    cidr_blocks = var.whitelist
   }
 
   # outbound internet access
@@ -39,9 +39,9 @@ resource "aws_security_group" "allow_from_office" {
   }
 
   tags = "${
-            merge(
-              map("Name", format("%s-%s", var.resource_name_prefix, "whitelist")),
-              var.tags,
-            )
-          }"
+    merge(
+      map("Name", format("%s-%s", var.resource_name_prefix, "whitelist")),
+      var.tags,
+    )
+  }"
 }

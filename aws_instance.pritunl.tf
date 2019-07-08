@@ -13,9 +13,9 @@ resource "aws_instance" "pritunl" {
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
   tags = "${
-            merge(
-              map("Name", format("%s-%s", var.resource_name_prefix, "vpn")),
-              var.tags,
-            )
-          }"
+    merge(
+      map("Name", format("%s-%s", var.resource_name_prefix, "vpn")),
+      var.tags,
+    )
+  }"
 }

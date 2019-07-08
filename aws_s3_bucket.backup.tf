@@ -26,9 +26,9 @@ resource "aws_s3_bucket" "backup" {
   }
 
   tags = "${
-            merge(
-              map("Name", local.backup_bucket_name),
-              var.tags,
-            )
-          }"
+    merge(
+      map("Name", local.backup_bucket_name),
+      var.tags,
+    )
+  }"
 }
