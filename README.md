@@ -1,4 +1,7 @@
 # Overview
+
+This a modifed form of the pritunl module for terraform.
+
 This module setups a VPN server for a VPC to connect to instances.
 
 *Before you start to use the module you have to make sure you've created resources below*
@@ -10,33 +13,9 @@ After provisioning, don't forget to run commands below:
 * **Pritunl setup**
   * `sudo pritunl setup-key`
 
-# Input variables
+## Usage
 
-* **aws_key_name:** SSH Key pair for VPN instance
-* **vpc_id:** The VPC id
-* **public_subnet_id:** One of the public subnets to create the instance
-* **ami_id:** Amazon Linux AMI ID
-* **instance_type:** Instance type of the VPN box (t2.small is mostly enough)
-* **whitelist:** List of office IP addresses that you can SSH and non-VPN connected users can reach temporary profile download pages
-* **whitelist_http:** List of IP addresses that you can allow HTTP connections.
-* **internal_cidrs:** List of CIDRs that will be whitelisted to access the VPN server internally.
-* **tags:** Map of AWS Tag key and values
-* **resource_name_prefix:** All the resources will be prefixed with the value of this variable
-* **healthchecks_io_key:** Health check key for healthchecks.io
-* **s3_bucket_name:** Optional bucket name for Pritunl backups
-
-# Outputs
-* **vpn_instance_private_ip_address:** Private IP address of the instance
-* **vpn_public_ip_address:** EIP of the VPN box
-* **vpn_management_ui:** URL for the management UI
-
-
-# Usage
-
-```
-provider "aws" {
-  region  = "eu-west-2"
-}
+```terraform
 
 module "app_pritunl" {
   source = "github.com/opsgang/terraform_pritunl?ref=2.0.0"
@@ -60,6 +39,33 @@ module "app_pritunl" {
   }
 }
 ```
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| ami\_id | AMI ID of Amazon Linux | string | n/a | yes |
+| aws\_key\_name | SSH keypair name for the VPN instance | string | n/a | yes |
+| healthchecks\_io\_key | Health check key for healthchecks.io | string | `"invalid"` | no |
+| instance\_type | Instance type for VPN Box | string | `"t2.micro"` | no |
+| internal\_cidrs | [List] IP CIDRs to whitelist in the pritunl's security group | list(string) | `[ "10.0.0.0/8" ]` | no |
+| public\_subnet\_id | One of the public subnet id for the VPN instance | string | n/a | yes |
+| resource\_name\_prefix | All the resources will be prefixed with the value of this variable | string | `"pritunl"` | no |
+| s3\_bucket\_name | [String] Optional S3 bucket name for backups | string | `""` | no |
+| tags | A map of tags to add to all resources | map | `{}` | no |
+| vpc\_id | Which VPC VPN server will be created in | string | n/a | yes |
+| whitelist | [List] Office IP CIDRs for SSH and HTTPS | list(string) | n/a | yes |
+| whitelist\_http | [List] Whitelist for HTTP port | list(string) | `[ "0.0.0.0/0" ]` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| vpn\_instance\_private\_ip\_address |  |
+| vpn\_management\_ui |  |
+| vpn\_public\_ip\_address |  |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 **P.S. :** Yes, AMI id is hardcoded! This module meant to be used in your VPC template. Presumably, no one wants to destroy the VPN instance and restore the configuration after `terraform apply` against to VPC. There is no harm to manage that manually and keep people working during the day.
 

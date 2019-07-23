@@ -12,22 +12,24 @@ variable "public_subnet_id" {
 
 variable "ami_id" {
   description = "AMI ID of Amazon Linux"
+  type        = string
+
 }
 
 variable "instance_type" {
   description = "Instance type for VPN Box"
-  type        = "string"
+  type        = string
   default     = "t2.micro"
 }
 
 variable "whitelist" {
   description = "[List] Office IP CIDRs for SSH and HTTPS"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "whitelist_http" {
   description = "[List] Whitelist for HTTP port"
-  type        = "list"
+  type        = list(string)
   default     = ["0.0.0.0/0"]
 }
 
@@ -37,6 +39,7 @@ variable "tags" {
 }
 
 variable "resource_name_prefix" {
+  type        = string
   description = "All the resources will be prefixed with the value of this variable"
   default     = "pritunl"
 }
@@ -48,11 +51,12 @@ variable "healthchecks_io_key" {
 
 variable "internal_cidrs" {
   description = "[List] IP CIDRs to whitelist in the pritunl's security group"
-  type        = "list"
+  type        = list(string)
   default     = ["10.0.0.0/8"]
 }
 
 variable "s3_bucket_name" {
+  type        = string
   description = "[String] Optional S3 bucket name for backups"
   default     = ""
 }
