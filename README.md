@@ -62,6 +62,7 @@ module "app_pritunl" {
 
 | Name | Description |
 |------|-------------|
+| backup\_bucket |  |
 | vpn\_instance\_private\_ip\_address |  |
 | vpn\_management\_ui |  |
 | vpn\_public\_ip\_address |  |
