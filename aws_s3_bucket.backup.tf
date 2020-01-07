@@ -1,9 +1,7 @@
 resource "aws_s3_bucket" "backup" {
   depends_on = [aws_kms_key.parameter_store]
-
-  bucket = local.backup_bucket_name
-
-  acl = "private"
+  bucket     = "vpn-backup-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
+  acl        = "private"
 
   server_side_encryption_configuration {
     rule {
