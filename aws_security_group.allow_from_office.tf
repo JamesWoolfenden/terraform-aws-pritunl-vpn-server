@@ -38,10 +38,5 @@ resource "aws_security_group" "allow_from_office" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = "${
-    merge(
-      map("Name", format("%s-%s", var.resource_name_prefix, "whitelist")),
-      var.tags,
-    )
-  }"
+  tags = var.common_tags
 }

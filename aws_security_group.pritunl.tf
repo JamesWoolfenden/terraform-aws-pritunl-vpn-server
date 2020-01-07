@@ -52,10 +52,5 @@ resource "aws_security_group" "pritunl" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = "${
-    merge(
-      map("Name", format("%s-%s", var.resource_name_prefix, "vpn")),
-      var.tags,
-    )
-  }"
+  tags = var.common_tags
 }

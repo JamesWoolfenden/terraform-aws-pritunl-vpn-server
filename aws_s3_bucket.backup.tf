@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "backup" {
-  depends_on = ["aws_kms_key.parameter_store"]
+  depends_on = [aws_kms_key.parameter_store]
 
   bucket = local.backup_bucket_name
 
@@ -25,10 +25,5 @@ resource "aws_s3_bucket" "backup" {
     abort_incomplete_multipart_upload_days = 7
   }
 
-  tags = "${
-    merge(
-      map("Name", local.backup_bucket_name),
-      var.tags,
-    )
-  }"
+  tags = var.common_tags
 }

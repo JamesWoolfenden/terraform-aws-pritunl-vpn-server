@@ -33,8 +33,9 @@ variable "whitelist_http" {
   default     = ["0.0.0.0/0"]
 }
 
-variable "tags" {
+variable "common_tags" {
   description = "A map of tags to add to all resources"
+  type        = map
   default     = {}
 }
 

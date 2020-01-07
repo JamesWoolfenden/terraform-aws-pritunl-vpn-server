@@ -1,5 +1,5 @@
 data "template_file" "iam_instance_role_policy" {
-  template = "${file("${path.module}/templates/iam_instance_role_policy.json.tpl")}"
+  template = file("${path.module}/templates/iam_instance_role_policy.json.tpl")
 
   vars = {
     s3_backup_bucket     = local.backup_bucket_name
