@@ -1,5 +1,5 @@
 data "template_file" "kms_policy" {
-  template = "${file("${path.module}/templates/key_policy.json.tpl")}"
+  template = file("${path.module}/templates/key_policy.json.tpl")
 
   vars = {
     resource_name_prefix = var.resource_name_prefix

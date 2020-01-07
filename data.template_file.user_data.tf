@@ -1,5 +1,5 @@
 data "template_file" "user_data" {
-  template = "${file("${path.module}/templates/user_data.sh.tpl")}"
+  template = file("${path.module}/templates/user_data.sh.tpl")
 
   vars = {
     aws_region          = data.aws_region.current.name

@@ -1,14 +1,14 @@
 resource "aws_s3_bucket" "backup" {
   depends_on = ["aws_kms_key.parameter_store"]
 
-  bucket = "${local.backup_bucket_name}"
+  bucket = local.backup_bucket_name
 
   acl = "private"
 
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = "${aws_kms_key.parameter_store.arn}"
+        kms_master_key_id = aws_kms_key.parameter_store.arn
         sse_algorithm     = "aws:kms"
       }
     }

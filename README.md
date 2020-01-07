@@ -1,10 +1,12 @@
-# Overview
+[![Slalom][logo]](https://slalom.com)
 
-This a modifed form of the pritunl module for terraform.
+# terraform-aws-aws-pritunl-vpn-server
 
-This module setups a VPN server for a VPC to connect to instances.
+This a modified form of the Pritunl module for Terraform.
 
-*Before you start to use the module you have to make sure you've created resources below*
+This module sets ups a VPN server for a VPC to connect to instances.
+
+* Before you start to use the module you have to make sure you've created resources below*
 
 * healthchecks.io account and cron entry for monitoring the backup script
 
@@ -18,11 +20,10 @@ After provisioning, don't forget to run commands below:
 ```terraform
 
 module "app_pritunl" {
-  source = "github.com/opsgang/terraform_pritunl?ref=2.0.0"
-
+  source               = "github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server"
   aws_key_name         = "org-eu-west-2"
-  vpc_id               = "${module.vpc.vpc_id}"
-  public_subnet_id     = "${module.vpc.public_subnets[1]}"
+  vpc_id               = module.vpc.vpc_id
+  public_subnet_id     = module.vpc.public_subnets[1]
   ami_id               = "ami-403e2524"
   instance_type        = "t2.nano"
   resource_name_prefix = "opsgang-pritunl"
@@ -66,7 +67,3 @@ module "app_pritunl" {
 | vpn\_public\_ip\_address |  |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-**P.S. :** Yes, AMI id is hardcoded! This module meant to be used in your VPC template. Presumably, no one wants to destroy the VPN instance and restore the configuration after `terraform apply` against to VPC. There is no harm to manage that manually and keep people working during the day.
-
-*There will be wiki link about initial setup of Pritunl*

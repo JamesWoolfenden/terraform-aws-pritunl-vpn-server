@@ -5,8 +5,8 @@ resource "aws_instance" "pritunl" {
   user_data     = data.template_file.user_data.rendered
 
   vpc_security_group_ids = [
-    "${aws_security_group.pritunl.id}",
-    "${aws_security_group.allow_from_office.id}",
+    aws_security_group.pritunl.id,
+    aws_security_group.allow_from_office.id,
   ]
 
   subnet_id            = var.public_subnet_id
