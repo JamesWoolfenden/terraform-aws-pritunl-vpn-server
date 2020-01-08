@@ -12,5 +12,5 @@ resource "aws_instance" "pritunl" {
   subnet_id            = var.public_subnet_id
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
-  tags = var.common_tags
+  tags = merge({ "Name" = "${var.resource_name_prefix}-vpn" }, var.common_tags)
 }
