@@ -45,38 +45,6 @@ module "app_pritunl" {
   }
 }
 ```
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Providers
-
-| Name | Version |
-|------|---------|
-| aws | n/a |
-| template | n/a |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| ami\_id | AMI ID of Amazon Linux | `string` | n/a | yes |
-| aws\_key\_name | SSH keypair name for the VPN instance | `any` | n/a | yes |
-| common\_tags | A map of tags to add to all resources | `map` | `{}` | no |
-| healthchecks\_io\_key | Health check key for healthchecks.io | `string` | `"invalid"` | no |
-| instance\_type | Instance type for VPN Box | `string` | `"t2.micro"` | no |
-| internal\_cidrs | [List] IP CIDRs to whitelist in the pritunl's security group | `list(string)` | <pre>[<br>  "10.0.0.0/8"<br>]<br></pre> | no |
-| public\_subnet\_id | One of the public subnet id for the VPN instance | `any` | n/a | yes |
-| resource\_name\_prefix | All the resources will be prefixed with the value of this variable | `string` | `"pritunl"` | no |
-| s3\_bucket\_name | [String] Optional S3 bucket name for backups | `string` | `""` | no |
-| vpc\_id | Which VPC VPN server will be created in | `any` | n/a | yes |
-| whitelist | [List] Office IP CIDRs for SSH and HTTPS | `list(string)` | n/a | yes |
-| whitelist\_http | [List] Whitelist for HTTP port | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]<br></pre> | no |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| backup\_bucket | n/a |
-| vpn\_instance\_private\_ip\_address | n/a |
-| vpn\_management\_ui | n/a |
-| vpn\_public\_ip\_address | n/a |
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+Error: no lines in file
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
