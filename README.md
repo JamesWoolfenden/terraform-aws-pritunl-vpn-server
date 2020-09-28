@@ -1,5 +1,3 @@
-[![Slalom][logo]](https://slalom.com)
-
 # terraform-aws-pritunl-vpn-server
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
@@ -9,14 +7,14 @@ This a modified form of the Pritunl module for Terraform.
 
 This module sets ups a VPN server for a VPC to connect to instances.
 
-* Before you start to use the module you have to make sure you've created resources below*
+- Before you start to use the module you have to make sure you've created resources below\*
 
-* healthchecks.io account and cron entry for monitoring the backup script.
+- healthchecks.io account and cron entry for monitoring the backup script.
 
 After provisioning, don't forget to run commands below:
 
-* **Pritunl setup**
-  * `sudo pritunl setup-key`
+- **Pritunl setup**
+  - `sudo pritunl setup-key`
 
 ## Usage
 
@@ -45,6 +43,7 @@ module "app_pritunl" {
   }
 }
 ```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 

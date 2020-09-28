@@ -17,5 +17,9 @@ resource "aws_instance" "pritunl" {
     encrypted = true
   }
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   tags = merge({ "Name" = "${var.resource_name_prefix}-vpn" }, var.common_tags)
 }
