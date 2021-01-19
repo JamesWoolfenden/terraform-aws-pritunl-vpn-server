@@ -1,6 +1,6 @@
 resource "aws_security_group" "pritunl" {
-  name        = "${var.resource_name_prefix}-vpn"
-  description = "${var.resource_name_prefix}-vpn"
+  name        = local.sg_name
+  description = local.sg_name
   vpc_id      = var.vpc_id
 
   # SSH access

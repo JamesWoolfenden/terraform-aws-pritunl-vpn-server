@@ -1,8 +1,9 @@
 resource "aws_s3_bucket" "backup" {
   #checkov:skip=CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
   #checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
+  #checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
   depends_on = [aws_kms_key.parameter_store]
-  bucket     = "vpn-backup-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
+  bucket     = local.backup_bucket
   acl        = "private"
 
   server_side_encryption_configuration {

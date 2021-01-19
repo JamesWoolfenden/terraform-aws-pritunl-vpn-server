@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_from_office" {
-  name        = "${var.resource_name_prefix}-whitelist"
+  name        = local.sg_name_office
   description = "Allows SSH connections and HTTP(s) connections from office"
   vpc_id      = var.vpc_id
 

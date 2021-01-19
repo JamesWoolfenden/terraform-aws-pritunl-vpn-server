@@ -1,7 +1,13 @@
 # terraform-aws-pritunl-vpn-server
 
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server)
+[![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-pritunl-vpn-server.svg)](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server/releases/latest)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-pritunl-vpn-server.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server/releases/latest)
+![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/JamesWoolfenden/terraform-aws-pritunl-vpn-server/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-pritunl-vpn-server&benchmark=CIS+AWS+V1.2)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/jameswoolfenden/terraform-aws-pritunl-vpn-server/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-pritunl-vpn-server&benchmark=INFRASTRUCTURE+SECURITY)
 
 This a modified form of the Pritunl module for Terraform.
 
@@ -13,8 +19,11 @@ This module sets ups a VPN server for a VPC to connect to instances.
 
 After provisioning, don't forget to run commands below:
 
-- **Pritunl setup**
-  - `sudo pritunl setup-key`
+(**Pritunl setup**)
+
+```bash
+`sudo pritunl setup-key`
+```
 
 ## Usage
 
@@ -62,7 +71,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | ami\_id | AMI ID of Amazon Linux | `string` | n/a | yes |
 | aws\_key\_name | SSH keypair name for the VPN instance | `any` | n/a | yes |
-| common\_tags | A map of tags to add to all resources | `map` | `{}` | no |
+| common\_tags | A map of tags to add to all resources | `map(any)` | `{}` | no |
 | healthchecks\_io\_key | Health check key for healthchecks.io | `string` | `"invalid"` | no |
 | instance\_type | Instance type for VPN Box | `string` | `"t2.micro"` | no |
 | internal\_cidrs | [List] IP CIDRs to whitelist in the pritunl's security group | `list(string)` | <pre>[<br>  "10.0.0.0/8"<br>]</pre> | no |
@@ -83,3 +92,17 @@ No requirements.
 | vpn\_public\_ip\_address | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+### Contributors
+
+[![James Woolfenden][jameswoolfenden_avatar]][jameswoolfenden_homepage]<br/>[James Woolfenden][jameswoolfenden_homepage]
+
+[jameswoolfenden_homepage]: https://github.com/jameswoolfenden
+[jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
+[github]: https://github.com/jameswoolfenden
+[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
+[twitter]: https://twitter.com/JimWoolfenden
+[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-pritunl-vpn-server&url=https://github.com/jameswoolfenden/terraform-aws-pritunl-vpn-server
+[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-pritunl-vpn-server&url=https://github.com/jameswoolfenden/terraform-aws-pritunl-vpn-server
+[share_reddit]: https://reddit.com/submit/?url=https://github.com/jameswoolfenden/terraform-aws-pritunl-vpn-server
+[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/jameswoolfenden/terraform-aws-pritunl-vpn-server
+[share_email]: mailto:?subject=terraform-aws-pritunl-vpn-server&body=https://github.com/jameswoolfenden/terraform-aws-pritunl-vpn-server
