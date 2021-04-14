@@ -1,7 +1,8 @@
 resource "aws_s3_bucket" "backup" {
-  #checkov:skip=CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
-  #checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
-  #checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
+	# checkov:skip=CKV_AWS_144: ADD REASON
+  # checkov:skip=CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
+  # checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
+  # checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
   depends_on = [aws_kms_key.parameter_store]
   bucket     = local.backup_bucket
   acl        = "private"

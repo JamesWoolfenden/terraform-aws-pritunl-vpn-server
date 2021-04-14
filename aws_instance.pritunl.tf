@@ -4,6 +4,8 @@ resource "aws_instance" "pritunl" {
   instance_type = var.instance_type
   key_name      = var.aws_key_name
   user_data     = data.template_file.user_data.rendered
+  ebs_optimized = true
+  monitoring = true
 
   vpc_security_group_ids = [
     aws_security_group.pritunl.id,
