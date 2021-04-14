@@ -17,6 +17,7 @@ resource "aws_security_group" "pritunl" {
     to_port   = 80
     protocol  = "tcp"
 
+    # tfsec:ignore:AWS008
     cidr_blocks = var.whitelist_http
   }
 
@@ -30,10 +31,12 @@ resource "aws_security_group" "pritunl" {
 
   # VPN WAN access
   ingress {
-    from_port   = 10000
-    to_port     = 19999
+    from_port = 10000
+    to_port   = 19999
+    # tfsec:ignore:AWS008
     protocol    = "udp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.internal_cidrs
+    #cidr_blocks = ["0.0.0.0/0"]
   }
 
   # ICMP
@@ -46,9 +49,10 @@ resource "aws_security_group" "pritunl" {
 
   # outbound internet access
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    # tfsec:ignore:AWS009
     cidr_blocks = ["0.0.0.0/0"]
   }
 
