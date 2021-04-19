@@ -62,56 +62,59 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
-| template | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_template"></a> [template](#provider\_template) | n/a |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name |
-|------|
-| [aws_caller_identity](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) |
-| [aws_eip](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) |
-| [aws_iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) |
-| [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) |
-| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
-| [aws_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) |
-| [aws_kms_alias](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) |
-| [aws_kms_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) |
-| [aws_region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) |
-| [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) |
-| [aws_security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) |
-| [aws_ssm_parameter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) |
-| [template_file](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) |
+| Name | Type |
+|------|------|
+| [aws_eip.pritunl](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
+| [aws_iam_instance_profile.ec2_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
+| [aws_iam_role.role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
+| [aws_instance.pritunl](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
+| [aws_kms_alias.parameter_store](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
+| [aws_kms_key.parameter_store](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
+| [aws_s3_bucket.backup](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
+| [aws_security_group.allow_from_office](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group.pritunl](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_ssm_parameter.healthchecks_io_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
+| [template_file.iam_instance_role_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+| [template_file.kms_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+| [template_file.user_data](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ami\_id | AMI ID of Amazon Linux | `string` | n/a | yes |
-| aws\_key\_name | SSH keypair name for the VPN instance | `any` | n/a | yes |
-| common\_tags | A map of tags to add to all resources | `map(any)` | `{}` | no |
-| healthchecks\_io\_key | Health check key for healthchecks.io | `string` | `"invalid"` | no |
-| instance\_type | Instance type for VPN Box | `string` | `"t2.micro"` | no |
-| internal\_cidrs | [List] IP CIDRs to whitelist in the pritunl's security group | `list(string)` | <pre>[<br>  "10.0.0.0/8"<br>]</pre> | no |
-| public\_subnet\_id | One of the public subnet id for the VPN instance | `any` | n/a | yes |
-| resource\_name\_prefix | All the resources will be prefixed with the value of this variable | `string` | `"pritunl"` | no |
-| s3\_bucket\_name | [String] Optional S3 bucket name for backups | `string` | `""` | no |
-| vpc\_id | Which VPC VPN server will be created in | `any` | n/a | yes |
-| whitelist | [List] Office IP CIDRs for SSH and HTTPS | `list(string)` | n/a | yes |
-| whitelist\_http | [List] Whitelist for HTTP port | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | AMI ID of Amazon Linux | `string` | n/a | yes |
+| <a name="input_aws_key_name"></a> [aws\_key\_name](#input\_aws\_key\_name) | SSH keypair name for the VPN instance | `any` | n/a | yes |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | A map of tags to add to all resources | `map(any)` | `{}` | no |
+| <a name="input_healthchecks_io_key"></a> [healthchecks\_io\_key](#input\_healthchecks\_io\_key) | Health check key for healthchecks.io | `string` | `"invalid"` | no |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instance type for VPN Box | `string` | `"t2.micro"` | no |
+| <a name="input_internal_cidrs"></a> [internal\_cidrs](#input\_internal\_cidrs) | [List] IP CIDRs to whitelist in the pritunl's security group | `list(string)` | <pre>[<br>  "10.0.0.0/8"<br>]</pre> | no |
+| <a name="input_public_subnet_id"></a> [public\_subnet\_id](#input\_public\_subnet\_id) | One of the public subnet id for the VPN instance | `any` | n/a | yes |
+| <a name="input_resource_name_prefix"></a> [resource\_name\_prefix](#input\_resource\_name\_prefix) | All the resources will be prefixed with the value of this variable | `string` | `"pritunl"` | no |
+| <a name="input_s3_bucket_name"></a> [s3\_bucket\_name](#input\_s3\_bucket\_name) | [String] Optional S3 bucket name for backups | `string` | `""` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | Which VPC VPN server will be created in | `any` | n/a | yes |
+| <a name="input_whitelist"></a> [whitelist](#input\_whitelist) | [List] Office IP CIDRs for SSH and HTTPS | `list(string)` | n/a | yes |
+| <a name="input_whitelist_http"></a> [whitelist\_http](#input\_whitelist\_http) | [List] Whitelist for HTTP port | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| backup\_bucket | n/a |
-| vpn\_instance\_private\_ip\_address | n/a |
-| vpn\_management\_ui | n/a |
-| vpn\_public\_ip\_address | n/a |
+| <a name="output_backup_bucket"></a> [backup\_bucket](#output\_backup\_bucket) | n/a |
+| <a name="output_vpn_instance_private_ip_address"></a> [vpn\_instance\_private\_ip\_address](#output\_vpn\_instance\_private\_ip\_address) | n/a |
+| <a name="output_vpn_management_ui"></a> [vpn\_management\_ui](#output\_vpn\_management\_ui) | n/a |
+| <a name="output_vpn_public_ip_address"></a> [vpn\_public\_ip\_address](#output\_vpn\_public\_ip\_address) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ### Contributors
 
