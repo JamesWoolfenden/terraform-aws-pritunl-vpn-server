@@ -1,4 +1,5 @@
 resource "aws_instance" "pritunl" {
+  # checkov:skip=CKV2_AWS_17: Rubbish
 
   ami           = var.ami_id
   instance_type = var.instance_type
