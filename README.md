@@ -53,6 +53,40 @@ module "app_pritunl" {
 }
 ```
 
+## Costs
+
+```text
+Monthly cost estimate
+
+Project: .
+
+ Name                                                     Monthly Qty  Unit                Monthly Cost
+
+ module.vpn.aws_eip.pritunl
+ └─ IP address (if unused)                                        730  hours                      $3.65
+
+ module.vpn.aws_instance.pritunl
+ ├─ Instance usage (Linux/UNIX, on-demand, t2.micro)              730  hours                      $9.64
+ ├─ EC2 detailed monitoring                                         7  metrics                    $2.10
+ └─ root_block_device
+    └─ Storage (general purpose SSD, gp2)                           8  GB-months                  $0.93
+
+ module.vpn.aws_kms_key.parameter_store
+ ├─ Customer master key                                             1  months                     $1.00
+ ├─ Requests                                          Cost depends on usage: $0.03 per 10k requests
+ ├─ ECC GenerateDataKeyPair requests                  Cost depends on usage: $0.10 per 10k requests
+ └─ RSA GenerateDataKeyPair requests                  Cost depends on usage: $0.10 per 10k requests
+
+ module.vpn.aws_s3_bucket.backup
+ └─ Standard
+    ├─ Storage                                        Cost depends on usage: $0.02 per GB-months
+    ├─ PUT, COPY, POST, LIST requests                 Cost depends on usage: $0.0053 per 1k requests
+    ├─ GET, SELECT, and all other requests            Cost depends on usage: $0.00042 per 1k requests
+    ├─ Select data scanned                            Cost depends on usage: $0.00225 per GB-months
+    └─ Select data returned                           Cost depends on usage: $0.0008 per GB-months
+
+ PROJECT TOTAL                                                                                   $17.31
+```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
