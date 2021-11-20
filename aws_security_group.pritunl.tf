@@ -5,6 +5,7 @@ resource "aws_security_group" "pritunl" {
 
   # SSH access
   ingress {
+    description = "Allow SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -13,9 +14,10 @@ resource "aws_security_group" "pritunl" {
 
   # HTTP access for Let's Encrypt validation
   ingress {
-    from_port = 80
-    to_port   = 80
-    protocol  = "tcp"
+    description = "Allow http"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
 
     # tfsec:ignore:AWS008
     cidr_blocks = var.whitelist_http
@@ -23,6 +25,7 @@ resource "aws_security_group" "pritunl" {
 
   # HTTPS access
   ingress {
+    description = "allow HTTPS"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
@@ -31,8 +34,9 @@ resource "aws_security_group" "pritunl" {
 
   # VPN WAN access
   ingress {
-    from_port = 10000
-    to_port   = 19999
+    description = "Allow WAN"
+    from_port   = 10000
+    to_port     = 19999
     # tfsec:ignore:AWS008
     protocol    = "udp"
     cidr_blocks = var.internal_cidrs
@@ -41,6 +45,7 @@ resource "aws_security_group" "pritunl" {
 
   # ICMP
   ingress {
+    description = "Allow ping"
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
@@ -49,9 +54,10 @@ resource "aws_security_group" "pritunl" {
 
   # outbound internet access
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
+    description = "Allow outbound"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     # tfsec:ignore:AWS009
     cidr_blocks = ["0.0.0.0/0"]
   }
