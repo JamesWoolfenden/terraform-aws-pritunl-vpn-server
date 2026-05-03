@@ -1,5 +1,3 @@
-
-
 resource "aws_s3_bucket" "backup" {
   # tfsec:ignore:AWS002
   # tfsec:ignore:AWS077
@@ -16,7 +14,6 @@ resource "aws_s3_bucket" "backup" {
 
   tags = var.common_tags
 }
-
 resource "aws_s3_bucket_lifecycle_configuration" "backup" {
   bucket = aws_s3_bucket.backup.id
 
@@ -35,12 +32,10 @@ resource "aws_s3_bucket_lifecycle_configuration" "backup" {
     }
   }
 }
-
 resource "aws_s3_bucket_acl" "backup" {
   bucket = aws_s3_bucket.backup.bucket
   acl    = "private"
 }
-
 resource "aws_s3_bucket_server_side_encryption_configuration" "backup" {
   bucket = aws_s3_bucket.backup.bucket
 

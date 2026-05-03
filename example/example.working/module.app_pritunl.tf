@@ -1,5 +1,5 @@
 module "app_pritunl" {
-  source               = "github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server"
+  source               = "git::https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server.git?ref=2038dd9d77afca919cb2d29cfcc1f85bac0a66eb"
   ami_id               = data.aws_ami.amazon_linux.image_id
   aws_key_name         = aws_key_pair.ssh.key_name
   instance_type        = "t2.nano"
