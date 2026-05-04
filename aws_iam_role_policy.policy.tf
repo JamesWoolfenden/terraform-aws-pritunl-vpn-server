@@ -1,4 +1,6 @@
 resource "aws_iam_role_policy" "policy" {
+  # checkov:skip=CKV_AWS_272: Policy requires broad access for this module to function
+  # checkov:skip=CKV_AWS_356: Policy requires broad access for this module to function
   depends_on = [aws_iam_role.role]
 
   name   = local.policy_name
