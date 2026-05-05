@@ -177,6 +177,7 @@ resource "aws_iam_policy" "terraform_pike" {
             "Action": [
                 "ec2:AllocateAddress",
                 "ec2:AssociateAddress",
+                "ec2:AssociateIamInstanceProfile",
                 "ec2:AuthorizeSecurityGroupEgress",
                 "ec2:AuthorizeSecurityGroupIngress",
                 "ec2:CreateSecurityGroup",
@@ -185,18 +186,23 @@ resource "aws_iam_policy" "terraform_pike" {
                 "ec2:DeleteTags",
                 "ec2:DescribeAccountAttributes",
                 "ec2:DescribeAddresses",
+                "ec2:DescribeIamInstanceProfileAssociations",
                 "ec2:DescribeInstanceAttribute",
                 "ec2:DescribeInstanceCreditSpecifications",
                 "ec2:DescribeInstanceTypes",
                 "ec2:DescribeInstances",
+                "ec2:DescribeKeyPairs",
                 "ec2:DescribeNetworkInterfaces",
                 "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
                 "ec2:DescribeTags",
                 "ec2:DescribeVolumes",
                 "ec2:DisassociateAddress",
+                "ec2:DisassociateIamInstanceProfile",
                 "ec2:ModifyInstanceAttribute",
                 "ec2:MonitorInstances",
                 "ec2:ReleaseAddress",
+                "ec2:ReplaceIamInstanceProfileAssociation",
                 "ec2:RevokeSecurityGroupEgress",
                 "ec2:RevokeSecurityGroupIngress",
                 "ec2:RunInstances",
@@ -205,7 +211,9 @@ resource "aws_iam_policy" "terraform_pike" {
                 "ec2:TerminateInstances",
                 "ec2:UnmonitorInstances"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor1",
@@ -227,7 +235,9 @@ resource "aws_iam_policy" "terraform_pike" {
                 "iam:PutRolePolicy",
                 "iam:RemoveRoleFromInstanceProfile"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor2",
@@ -249,9 +259,13 @@ resource "aws_iam_policy" "terraform_pike" {
                 "kms:PutKeyPolicy",
                 "kms:ScheduleKeyDeletion",
                 "kms:TagResource",
-                "kms:UntagResource"
+                "kms:UntagResource",
+                "kms:UpdateAlias",
+                "kms:UpdateKeyDescription"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor3",
@@ -280,10 +294,13 @@ resource "aws_iam_policy" "terraform_pike" {
                 "s3:PutBucketAcl",
                 "s3:PutBucketLogging",
                 "s3:PutBucketPublicAccessBlock",
+                "s3:PutBucketTagging",
                 "s3:PutEncryptionConfiguration",
                 "s3:PutLifecycleConfiguration"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor4",
@@ -295,9 +312,12 @@ resource "aws_iam_policy" "terraform_pike" {
                 "ssm:GetParameter",
                 "ssm:GetParameters",
                 "ssm:ListTagsForResource",
-                "ssm:PutParameter"
+                "ssm:PutParameter",
+                "ssm:RemoveTagsFromResource"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         }
     ]
 })
