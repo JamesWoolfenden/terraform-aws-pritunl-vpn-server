@@ -1,13 +1,11 @@
 # terraform-aws-pritunl-vpn-server
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server/workflows/Verify/badge.svg?branch=main)](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-pritunl-vpn-server.svg)](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server/releases/latest)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-pritunl-vpn-server.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-pritunl-vpn-server/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/JamesWoolfenden/terraform-aws-pritunl-vpn-server/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-pritunl-vpn-server&benchmark=CIS+AWS+V1.2)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/jameswoolfenden/terraform-aws-pritunl-vpn-server/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-pritunl-vpn-server&benchmark=INFRASTRUCTURE+SECURITY)
 
 This a modified form of the Pritunl module for Terraform.
 
@@ -95,7 +93,7 @@ No requirements.
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 | <a name="provider_template"></a> [template](#provider\_template) | n/a |
 
@@ -106,7 +104,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_eip.pritunl](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
 | [aws_iam_instance_profile.ec2_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_role.role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -131,24 +129,24 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | AMI ID of Amazon Linux | `string` | n/a | yes |
 | <a name="input_aws_key_name"></a> [aws\_key\_name](#input\_aws\_key\_name) | SSH keypair name for the VPN instance | `any` | n/a | yes |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | A map of tags to add to all resources | `map(any)` | `{}` | no |
 | <a name="input_healthchecks_io_key"></a> [healthchecks\_io\_key](#input\_healthchecks\_io\_key) | Health check key for healthchecks.io | `string` | `"invalid"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instance type for VPN Box | `string` | `"t2.micro"` | no |
-| <a name="input_internal_cidrs"></a> [internal\_cidrs](#input\_internal\_cidrs) | [List] IP CIDRs to whitelist in the pritunl's security group | `list(string)` | <pre>[<br>  "10.0.0.0/8"<br>]</pre> | no |
+| <a name="input_internal_cidrs"></a> [internal\_cidrs](#input\_internal\_cidrs) | [List] IP CIDRs to whitelist in the pritunl's security group | `list(string)` | <pre>[<br/>  "10.0.0.0/8"<br/>]</pre> | no |
 | <a name="input_public_subnet_id"></a> [public\_subnet\_id](#input\_public\_subnet\_id) | One of the public subnet id for the VPN instance | `any` | n/a | yes |
 | <a name="input_resource_name_prefix"></a> [resource\_name\_prefix](#input\_resource\_name\_prefix) | All the resources will be prefixed with the value of this variable | `string` | `"pritunl"` | no |
 | <a name="input_s3_bucket_name"></a> [s3\_bucket\_name](#input\_s3\_bucket\_name) | [String] Optional S3 bucket name for backups | `string` | `""` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | Which VPC VPN server will be created in | `any` | n/a | yes |
 | <a name="input_whitelist"></a> [whitelist](#input\_whitelist) | [List] Office IP CIDRs for SSH and HTTPS | `list(string)` | n/a | yes |
-| <a name="input_whitelist_http"></a> [whitelist\_http](#input\_whitelist\_http) | [List] Whitelist for HTTP port | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| <a name="input_whitelist_http"></a> [whitelist\_http](#input\_whitelist\_http) | [List] Whitelist for HTTP port | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_backup_bucket"></a> [backup\_bucket](#output\_backup\_bucket) | n/a |
 | <a name="output_vpn_instance_private_ip_address"></a> [vpn\_instance\_private\_ip\_address](#output\_vpn\_instance\_private\_ip\_address) | n/a |
 | <a name="output_vpn_management_ui"></a> [vpn\_management\_ui](#output\_vpn\_management\_ui) | n/a |

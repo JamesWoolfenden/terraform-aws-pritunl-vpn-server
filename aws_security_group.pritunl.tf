@@ -1,4 +1,5 @@
 resource "aws_security_group" "pritunl" {
+  # checkov:skip=CKV_AWS_260: port 80 required for letsencrypt http-01 challenge
   # checkov:skip=CKV_AWS_382: Unrestricted outbound access required for resource functionality
   name        = local.sg_name
   description = local.sg_name

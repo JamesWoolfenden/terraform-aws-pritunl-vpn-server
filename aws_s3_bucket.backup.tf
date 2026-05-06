@@ -1,8 +1,6 @@
 resource "aws_s3_bucket" "backup" {
   # checkov:skip=CKV2_AWS_61: Lifecycle configuration not required for this bucket
   # checkov:skip=CKV2_AWS_62: Event notifications not required for this bucket
-  # tfsec:ignore:AWS002
-  # tfsec:ignore:AWS077
   # checkov:skip=CKV_AWS_144: not appropriate
   # checkov:skip=CKV2_AWS_37: not appropriate
   # checkov:skip=CKV2_AWS_41: not appropriate
@@ -17,6 +15,7 @@ resource "aws_s3_bucket" "backup" {
   tags = var.common_tags
 }
 resource "aws_s3_bucket_lifecycle_configuration" "backup" {
+  # checkov:skip=CKV_AWS_300: abort_incomplete_multipart_upload is set; false positive
   bucket = aws_s3_bucket.backup.id
 
   rule {
